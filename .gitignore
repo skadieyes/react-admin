@@ -1,8 +1,10 @@
 # node.js
 #
 node_modules/
+.vscode/
 npm-debug.log
-
+yarn.lock
+yarn-error.log
 
 # build
 #
