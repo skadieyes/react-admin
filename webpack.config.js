@@ -7,6 +7,10 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/app.js',
+        publicPath:'/dist/'
+    },
+    devServer: {
+       port: 8080
     },
     module: {
         rules: [
@@ -34,7 +38,7 @@ module.exports = {
                     use: ['css-loader', 'sass-loader']
                 })
             }, {
-               // 图片配置
+                // 图片配置
                 test: /\.(png|jpg|gif)$/,
                 use: [
                     {
@@ -48,17 +52,17 @@ module.exports = {
             },
             {
                 // 字体图标配置
-                 test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
-                 use: [
-                     {
-                         loader: 'url-loader',
-                         options: {
-                             limit: 8192,
-                             name: 'resource/[name].[ext]'
-                         }
-                     }
-                 ]
-             }
+                test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            name: 'resource/[name].[ext]'
+                        }
+                    }
+                ]
+            }
         ]
     },
     plugins: [
@@ -72,7 +76,7 @@ module.exports = {
         new ExtractTextPlugin("css/[name].css"),
         // 提出公共模块
         new webpack.optimize.CommonsChunkPlugin({
-            name : 'common',
+            name: 'common',
             filename: 'js/base.js'
         })
     ]
