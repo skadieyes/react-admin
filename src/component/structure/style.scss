@@ -1,0 +1,29 @@
+.layout {
+    height: 100%;
+    .trigger {
+        font-size: 18px;
+        background-color: #ccc;
+        line-height: 64px;
+        padding: 0 24px;
+        cursor: pointer;
+        transition: color .3s;
+    }
+    
+    .trigger:hover {
+        color: #1890ff;
+    }
+    
+    .logo {
+        height: 32px;
+        background: rgba(255, 255, 255, .2);
+        margin: 16px;
+    }
+    .header{
+        background: #ffffff; 
+        padding: 0;
+        display: flex;
+        .ant-menu-horizontal{
+            line-height: 61px;
+        }
+    }
+}

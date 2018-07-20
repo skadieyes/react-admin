@@ -5,7 +5,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>Home
-                <Button >adfsdf</Button>
+                <Button >aa</Button>
             </div>
         )
     }
