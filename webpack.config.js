@@ -7,10 +7,18 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/app.js',
-        publicPath:'/dist/'
+        publicPath: '/dist/'
+    },
+    resolve: {
+        alias: {
+            page: path.resolve(__dirname, './src/page')
+        }
     },
     devServer: {
-       port: 8080
+        port: 8080,
+        historyApiFallback: {
+            index: '/dist/index.html'
+        }
     },
     module: {
         rules: [
@@ -36,6 +44,13 @@ module.exports = {
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: ['css-loader', 'sass-loader']
+                })
+            },
+            {   // less
+                test: /\.less$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'less-loader']
                 })
             }, {
                 // 图片配置

@@ -1,7 +1,0 @@
-
-@mixin bg() {
-    background: url('./asset/img/test.jpg');
-}
-body{
-    @include bg();
-}

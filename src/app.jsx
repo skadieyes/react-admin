@@ -1,14 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Switch, Redirect, Route, Link } from 'react-router-dom'
 
-import './index.css';
-import './index.scss';
+//page
+import Home from 'page/home/index.jsx';
 
-import 'font-awesome/css/font-awesome.min.css';
+
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <Switch>
+        <Route exact path='/' component = { Home }/>
+        <Redirect from='*' to='/'/>
+        </Switch>
+      </Router>
+    )
+  }
+}
 ReactDOM.render(
-   <div>
-     <i className='fa fa-user'></i>
-    <h1>Hello, world!</h1>
-    </div>,
-    document.getElementById('app')
-  );
+  <App />,
+  document.getElementById('app')
+);
