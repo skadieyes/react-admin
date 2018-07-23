@@ -9,6 +9,7 @@ import 'antd/lib/tooltip/style/index.less';
 import './style.scss';
 const { Header, Sider, Content } = Layout;
 
+
 class Structure extends React.Component {
     constructor(props) {
         super(props);
@@ -31,8 +32,7 @@ class Structure extends React.Component {
                 >
                     <div className="logo" >
                         <Link className='logo-link' to='/'>
-                            123123
-                    </Link>
+                        </Link>
                     </div>
                     <SiderContent />
                 </Sider>
@@ -46,8 +46,8 @@ class Structure extends React.Component {
                         <HeaderContent> </HeaderContent>
                     </Header>
                     <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
-                        Content
-              </Content>
+                        {this.props.children}
+                    </Content>
                 </Layout>
             </Layout>
         )

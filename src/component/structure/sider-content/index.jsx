@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Menu, Icon } from 'antd';
+import { Link, NavLink } from 'react-router-dom';
 import 'antd/lib/menu/style/index.less';
 import './style.scss';
 
@@ -21,24 +22,23 @@ class SiderContent extends React.Component {
     render() {
         return (
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                <Menu.Item key="1">
-                    <Icon ><i className='fa fa-bolt icon'></i> </Icon>
-                    <span>nav 1</span>
+                <Menu.Item key="home">
+                    <Link to='/home'>
+                        <Icon ><i className='fa fa-home icon'></i> </Icon>
+                        <span>首页</span>
+                    </Link>
                 </Menu.Item>
-                <Menu.Item key="2">
-                    <Icon><i className='fa fa-adjust icon'></i> </Icon>
-                    <span>nav 2</span>
-                </Menu.Item>
-                <Menu.Item key="3">
-                    <Icon><i className='fa fa-bicycle icon'></i> </Icon>
-                    <span>nav 3</span>
-                </Menu.Item>
-                <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
-                    <Menu.Item key="5">Option 5</Menu.Item>
-                    <Menu.Item key="6">Option 6</Menu.Item>
-                    <Menu.Item key="7">Option 7</Menu.Item>
-                    <Menu.Item key="8">Option 8</Menu.Item>
+
+                <SubMenu key="sub1"
+                    title={<span> <Icon ><i className='fa fa-database icon'></i> </Icon><span>增删改查</span></span>}>
+                    <Menu.Item key="product"> <Link to='/crud-product'> 管理商品 </Link></Menu.Item>
                 </SubMenu>
+
+                <SubMenu key="sub2"
+                    title={<span> <Icon ><i className='fa fa-database icon'></i> </Icon><span>通用</span></span>}>
+                    <Menu.Item key="login"> <Link to='/login'> 登录页 </Link></Menu.Item>
+                </SubMenu>
+
             </Menu>
         );
     }

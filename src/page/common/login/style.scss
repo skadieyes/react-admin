@@ -1,0 +1,51 @@
+.login-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    .card-box {
+        top: 20%;
+        padding-top: 30px;
+        position: relative;
+        display: inline-block;
+        .title {
+            display: inline-block;
+            background: linear-gradient(60deg, #ec407a, #d81b60);
+            box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
+            color: #fff;
+            padding: 15px 20px;
+            margin-top: -20px;
+            left: 20px;
+            border-radius: 3px;
+            position: absolute;
+            padding-top: 10px;
+            z-index: 1000;
+        }
+    }
+    .card {
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+        padding-top: 30px;
+        width: 400px;
+    }
+    .button-box{
+        width: 100%;
+        padding-top: 15px;
+    }
+    .MuiFormLabel-root-13 {
+        font-size: 14px !important;
+        color: #495057 !important;
+    }
+    .MuiInput-input-26 {
+        font-size: 14px !important;
+        color: #495057 !important;
+    }
+    .MuiInput-underline-22:after {
+        border-bottom: 2px solid #ec407a !important;
+    }
+    .MuiInput-underline-22:hover:not(.MuiInput-disabled-20):not(.MuiInput-focused-19):not(.MuiInput-error-22):before {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.47) !important;
+    }
+}
