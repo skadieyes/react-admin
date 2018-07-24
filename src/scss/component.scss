@@ -1,0 +1,30 @@
+.card-box {
+    .card {
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+        margin-top: 30px;
+        .content {
+            padding-top: 30px;
+        }
+    }
+    .title {
+        display: inline-block;
+        background: linear-gradient(60deg, #ec407a, #d81b60);
+        box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
+        color: #fff;
+        padding: 15px 20px;
+        margin-top: -20px;
+        left: 30px;
+        border-radius: 3px;
+        position: absolute;
+        padding-top: 10px;
+        z-index: 1000;
+    }
+    .yellow {
+        background: linear-gradient(60deg, #ffa726, #fb8c00);
+        box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
+    }
+    .blue {
+        background: linear-gradient(60deg, #26c6da, #00acc1);
+        box-shadow: 0 12px 20px -10px rgba(0, 188, 212, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2);
+    }
+}

@@ -8,6 +8,7 @@ import './style.scss';
 import Home from 'page/home/index.jsx';
 import Product from 'page/crud/index.jsx';
 import Login from 'page/common/login/index.jsx';
+import 'scss/index.scss';
 class App extends React.Component {
   render() {
     return (

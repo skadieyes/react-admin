@@ -1,23 +1,21 @@
 import React from 'react';
 import { Menu, Icon, Dropdown } from 'antd';
+import Common from 'util/common.jsx';
+import User from 'service/user-service.jsx';
 import './style.scss';
 import 'antd/lib/dropdown/style/index.less';
+
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
-
-const menu = (
-    <Menu>
-        <Menu.Item key="0">
-            <a>退出</a>
-        </Menu.Item>
-    </Menu>
-);
+const _common = new Common();
+const _user = new User();
 
 class HeaderContent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             current: 'mail',
+            username: _common.getStorage('userInfo').username || ''
         }
     }
 
@@ -27,7 +25,30 @@ class HeaderContent extends React.Component {
             current: e.key,
         });
     }
+
+    menu() {
+        const menu = (
+            <Menu>
+                <Menu.Item key="0">
+                    <a onClick = {this.logout.bind(this)}>退出</a>
+                </Menu.Item>
+            </Menu>
+        )
+        return menu;
+    }
+
+
+    logout() {
+        _user.logout().then(res => {
+            _common.removeStorage('userInfo');
+            window.location.href = '/login';
+        }, errMsg => {
+            _common.errorTips(errMsg);
+        })
+    }
+
     render() {
+        const { username } = this.state;
         return (
             <div className='header-content'>
                 <Menu
@@ -49,9 +70,9 @@ class HeaderContent extends React.Component {
                         </MenuItemGroup>
                     </SubMenu>
                 </Menu>
-                <Dropdown overlay={menu} trigger={['click']}>
+                <Dropdown overlay={this.menu()} trigger={['click']}>
                     <a className="dropdown-link" href="#">
-                    <i  className='fa fa-user-o'/>  Welecom Admin <i  className='fa fa-angle-down'/> <Icon type="down" />
+                        <i className='fa fa-user-o' />  Welecom  {username} <i className='fa fa-angle-down' /> <Icon type="down" />
                     </a>
                 </Dropdown>
             </div>

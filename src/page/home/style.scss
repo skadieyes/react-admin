@@ -1,0 +1,20 @@
+.home {
+    .row {
+        padding: 10px 0;
+    }
+
+    .card-box {
+        .card {
+            transition: all .3s;
+            opacity: .9;
+            .content {
+                .count {
+                    font-size: 48px;
+                }
+            }
+            &:hover{
+                transform: scale(1.08);
+            }
+        }
+    }
+}
