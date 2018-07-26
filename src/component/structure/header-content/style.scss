@@ -1,9 +1,17 @@
-.header-content{
+.header-content {
     display: flex;
-    .dropdown-link{
+    width: 100%;
+    .dropdown-link {
         color: rgba(0, 0, 0, 0.65);
         font-size: 14px;
-        position: absolute;
-        right: 40px;
+    }
+    .header-menu {
+        width: calc(100% - 200px);
+    }
+    .header-dropdown {
+        width: 200px;
+        padding-right: 30px;
+        display: flex;
+        flex-direction: row-reverse;
     }
 }

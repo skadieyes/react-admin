@@ -51,6 +51,7 @@ class HeaderContent extends React.Component {
         const { username } = this.state;
         return (
             <div className='header-content'>
+            <div className='header-menu'>
                 <Menu
                     onClick={this.handleClick.bind(this)}
                     selectedKeys={[this.state.current]}
@@ -70,11 +71,14 @@ class HeaderContent extends React.Component {
                         </MenuItemGroup>
                     </SubMenu>
                 </Menu>
+                </div>
+                <div className='header-dropdown'>
                 <Dropdown overlay={this.menu()} trigger={['click']}>
                     <a className="dropdown-link" href="#">
-                        <i className='fa fa-user-o' />  Welecom  {username} <i className='fa fa-angle-down' /> <Icon type="down" />
+                        <i className='fa fa-user-o' />  Welecom  {username}  <Icon type="down" />
                     </a>
                 </Dropdown>
+                </div>
             </div>
         );
     }

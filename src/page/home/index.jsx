@@ -2,13 +2,12 @@ import React from 'react';
 import Title from 'component/structure/title/index.jsx'
 import { Link } from 'react-router-dom';
 import Statistic from 'service/statistic-service.jsx'
-import { Row, Col } from 'antd';
-import { Card } from 'antd';
+import Common from 'util/common.jsx';
+import { Card, Row, Col } from 'antd';
 import './style.scss';
-import 'antd/lib/card/style/index.less';
-import 'antd/lib/grid/style/index.less';
 
 const _statistic = new Statistic();
+const _common = new Common();
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -23,7 +22,7 @@ class Home extends React.Component {
         _statistic.getHomeCount().then(res => {
             this.setState(res);
         }, errMsg => {
-            _mm.errorTips(errMsg);
+            _common.errorTips(errMsg);
         });
     }
     render() {

@@ -1,3 +1,5 @@
+@import './variable.scss';
+// card
 .card-box {
     .card {
         box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
@@ -14,7 +16,7 @@
         padding: 15px 20px;
         margin-top: -20px;
         left: 30px;
-        border-radius: 3px;
+        border-radius: 50%;
         position: absolute;
         padding-top: 10px;
         z-index: 1000;
@@ -27,4 +29,86 @@
         background: linear-gradient(60deg, #26c6da, #00acc1);
         box-shadow: 0 12px 20px -10px rgba(0, 188, 212, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2);
     }
+}
+
+//table
+.ant-table-thead {
+    tr {
+        th {
+            background: none;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+        }
+    }
+}
+
+.ant-table-tbody {
+    tr {
+        td {
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+        }
+    }
+    &>tr:hover>td {
+        background-color: #fff;
+        border-bottom: 1px solid $pagination-color;
+    }
+}
+
+// pagination
+.ant-pagination-item-active {
+    border-color: $pagination-color !important;
+    a {
+        color: $pagination-color !important;
+    }
+    &:hover {
+        border-color: $pagination-hover;
+        a {
+            color: $pagination-hover;
+        }
+    }
+}
+
+.ant-pagination-item:focus a,
+.ant-pagination-item:hover a {
+    color: $pagination-hover;
+}
+
+.ant-pagination-item-link {
+    color: $pagination-color;
+}
+
+
+.ant-pagination-prev:focus .ant-pagination-item-link,
+.ant-pagination-next:focus .ant-pagination-item-link,
+.ant-pagination-prev:hover .ant-pagination-item-link,
+.ant-pagination-next:hover .ant-pagination-item-link {
+    color: $pagination-hover;
+    border-color: $pagination-hover ;
+}
+
+.ant-pagination-jump-prev:focus:after,
+.ant-pagination-jump-next:focus:after,
+.ant-pagination-jump-prev:hover:after,
+.ant-pagination-jump-next:hover:after{
+    color: $pagination-hover ;
+    border-color: $pagination-hover ;
+}
+.ant-pagination-item:focus, .ant-pagination-item:hover{
+    border-color: $pagination-hover 
+}
+.ant-pagination-options-quick-jumper input:hover{
+    border-color: $pagination-hover 
+}
+.ant-pagination-options-quick-jumper input:focus{
+    border-color: $pagination-color;
+    outline: none;
+}
+
+// loadding 
+.ant-spin-nested-loading{
+    .ant-spin-dot i{
+        background-color: $magenta-6;
+    }
+    
 }

@@ -45,7 +45,7 @@ class Structure extends React.Component {
                         />
                         <HeaderContent> </HeaderContent>
                     </Header>
-                    <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
+                    <Content style={{ margin: '24px 16px', padding: '0 24px',  minHeight: 280 }}>
                         {this.props.children}
                     </Content>
                 </Layout>

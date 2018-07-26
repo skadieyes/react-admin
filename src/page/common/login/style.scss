@@ -27,12 +27,13 @@
     }
     .card {
         box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
-        padding-top: 30px;
         width: 400px;
+        margin-top: 0 !important;
+        padding-top: 30px;
     }
     .button-box{
         width: 100%;
-        padding-top: 15px;
+        padding-top: 30px;
     }
     .MuiFormLabel-root-13 {
         font-size: 14px !important;
