@@ -1,3 +1,3 @@
-import Product from 'page/crud/product/index.jsx';
+import ProductList from 'page/crud/product/index.jsx';
 
-export default Product;
+export default ProductList;

@@ -31,7 +31,7 @@ class SiderContent extends React.Component {
 
                 <SubMenu key="sub1"
                     title={<span> <Icon ><i className='fa fa-database icon'></i> </Icon><span>增删改查</span></span>}>
-                    <Menu.Item key="product"> <Link to='/crud-product'> 管理商品 </Link></Menu.Item>
+                    <Menu.Item key="product"> <Link to='/crud/product'> 管理商品 </Link></Menu.Item>
                     <Menu.Item key="user"> <Link to='/user'> 数据列表 </Link></Menu.Item>
                 </SubMenu>
 

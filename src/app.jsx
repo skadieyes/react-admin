@@ -6,25 +6,26 @@ import Structure from 'component/structure/index.jsx'
 import './style.scss';
 //page
 import Home from 'page/home/index.jsx';
-import Product from 'page/crud/index.jsx';
 import Login from 'page/common/login/index.jsx';
 import ErrorPage from 'page/common/error/index.jsx';
 import UserList from 'page/user/index.jsx';
+import CrudRouter from 'page/crud/index.jsx';
 import 'scss/index.scss';
 class App extends React.Component {
   render() {
-    let StructureRouter =(
+    let StructureRouter = (
       <Structure>
-                <Switch>
-                  <Route exact path='/home' component={Home} />
-                  <Route path='/crud-product' component={Product} />
-                  <Route path='/error' component={ErrorPage} />
-                  <Route path='/user/index' component={UserList} />
-                  <Redirect exact from='/user' to='/user/index' />
-                   <Redirect from='*' to='/home' />
-                </Switch>
-              </Structure>
+        <Switch>
+          <Route exact path='/home' component={Home} />
+          <Route path='/error' component={ErrorPage} />
+          <Route path='/user/index' component={UserList} />
+          <Route path="/crud"  component={CrudRouter}  />
+          <Redirect exact from='/user' to='/user/index' />
+          <Redirect from='*' to='/home' />
+        </Switch>
+      </Structure>
     );
+
     return (
       <Router>
         <Switch>

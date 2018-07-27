@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from 'component/structure/title/index.jsx'
-class Product extends React.Component {
+class ProductList extends React.Component {
     render() {
         return (
             <Title title = {'Product'} >
@@ -9,4 +9,4 @@ class Product extends React.Component {
     }
 }
 
-export default Product;
+export default ProductList;
