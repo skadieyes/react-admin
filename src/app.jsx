@@ -9,7 +9,23 @@ import Home from 'page/home/index.jsx';
 import Login from 'page/common/login/index.jsx';
 import ErrorPage from 'page/common/error/index.jsx';
 import UserList from 'page/user/index.jsx';
-import CrudRouter from 'page/crud/index.jsx';
+import CrudRouter from 'page/crud/router.jsx';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#ed4b82',
+      main: '#e91e63',
+      contrastText: '#a31545',
+    },
+     secondary: {
+      light: '#ffcf33',
+      main: '#ffc400',
+      contrastText: '#b28900',
+    }, 
+  },
+});
 import 'scss/index.scss';
 class App extends React.Component {
   render() {
@@ -27,6 +43,7 @@ class App extends React.Component {
     );
 
     return (
+      <MuiThemeProvider theme={theme}>
       <Router>
         <Switch>
           <Route path='/login' component={Login} />
@@ -35,6 +52,7 @@ class App extends React.Component {
           }} />
         </Switch>
       </Router>
+      </MuiThemeProvider>
     )
   }
 }

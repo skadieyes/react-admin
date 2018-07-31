@@ -104,8 +104,8 @@ class Login extends React.Component {
                             </FormControl>
                             <FormControl className={classNames(classes.margin) + 'button-box'}>
                                 <Button variant="contained"
-                                    color="secondary"
-                                    className={classes.button}
+                                    color="primary"
+                                    className={'btn'}
                                     onClick={this.onSubmit.bind(this)}
                                 >
                                     登录

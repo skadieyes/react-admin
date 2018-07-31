@@ -11,6 +11,20 @@ class Product {
             }
         })
     }
+    // 搜索商品列表
+    searchProductList(params){
+        return _request.post({
+            url: '/manage/product/search.do',
+            data: params
+        })
+    }
+    // 改变商品状态
+    setProductStatus(productStatus) {
+        return _request.post({
+            url: '/manage/product/set_sale_status.do',
+            data: productStatus
+        })
+    }
 }
 
 export default Product;

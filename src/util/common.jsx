@@ -8,38 +8,42 @@ class Common {
     }
     // 错误提示
     errorTips(errMsg) {
-        console.log(errMsg);
+        console.log(errMsg || '操作失败');
     }
-     // 本地存储
-     setStorage(name, data){
+    // 成功提示
+    successTips(successMsg) {
+        console.log(successMsg || '操作成功');
+    }
+    // 本地存储
+    setStorage(name, data) {
         let dataType = typeof data;
         // json对象
-        if(dataType === 'object'){
+        if (dataType === 'object') {
             window.localStorage.setItem(name, JSON.stringify(data));
         }
         // 基础类型
-        else if(['number','string','boolean'].indexOf(dataType) >= 0){
+        else if (['number', 'string', 'boolean'].indexOf(dataType) >= 0) {
             window.localStorage.setItem(name, data);
         }
         // 其他不支持的类型
-        else{
+        else {
             console.log('该类型不能用于本地存储');
         }
     }
-        // 取出本地存储内容
-        getStorage(name){
-            let data = window.localStorage.getItem(name);
-            if(data){
-                return JSON.parse(data);
-            }
-            else{
-                return '';
-            }
+    // 取出本地存储内容
+    getStorage(name) {
+        let data = window.localStorage.getItem(name);
+        if (data) {
+            return JSON.parse(data);
         }
-        // 删除本地存储
-        removeStorage(name){
-            window.localStorage.removeItem(name);
+        else {
+            return '';
         }
+    }
+    // 删除本地存储
+    removeStorage(name) {
+        window.localStorage.removeItem(name);
+    }
 }
 
 export default Common;
