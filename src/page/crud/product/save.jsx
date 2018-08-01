@@ -38,20 +38,20 @@ class ProductSave extends React.Component {
                         </div>
                         <Card bordered={false} className='card'>
                             <form className='form'>
-                                <div className='fc'>
-                                    <FormControl >
-                                        <InputLabel>商品名称</InputLabel>
-                                        <Input id="name" value={form.name} onChange={this.handleChange.bind(this, 'name')} />
-                                    </FormControl>
+                                <div className='fc'>       
+                                            <FormControl className='control'>
+                                                <InputLabel>商品名称</InputLabel>
+                                                <Input id="name" value={form.name} onChange={this.handleChange.bind(this, 'name')} />
+                                            </FormControl>
                                 </div>
                                 <div className='fc'>
-                                    <FormControl >
+                                    <FormControl className='control' >
                                         <InputLabel>商品描述</InputLabel>
                                         <Input id="subtitle" value={form.subtitle} onChange={this.handleChange.bind(this, 'subtitle')} />
                                     </FormControl>
                                 </div>
                                 <div className='fc'>
-                                    <FormControl >
+                                    <FormControl className='control' >
                                         <InputLabel>所属分类</InputLabel>
                                         <Select
                                             value={form.categoryId}
@@ -65,7 +65,7 @@ class ProductSave extends React.Component {
                                     </FormControl>
                                 </div>
                                 <div className='fc'>
-                                    <FormControl >
+                                    <FormControl className='control' >
                                         <InputLabel>商品价格</InputLabel>
                                         <Input id="price" value={form.price}
                                             onChange={this.handleChange.bind(this, 'price')}
@@ -74,7 +74,7 @@ class ProductSave extends React.Component {
                                     </FormControl>
                                 </div>
                                 <div className='fc'>
-                                    <FormControl >
+                                    <FormControl className='control' >
                                         <InputLabel>商品库存</InputLabel>
                                         <Input id="stock" value={form.stock}
                                             onChange={this.handleChange.bind(this, 'stock')}
