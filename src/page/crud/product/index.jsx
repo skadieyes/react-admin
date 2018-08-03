@@ -12,9 +12,6 @@ import Button from '@material-ui/core/Button';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import './style.scss';
 
-
-
-
 const _common = new Common();
 const _product = new Product();
 const confirm = Modal.confirm;
