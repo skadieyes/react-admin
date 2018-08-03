@@ -20,12 +20,13 @@ const theme = createMuiTheme({
       contrastText: '#a31545',
     },
      secondary: {
-      light: '#ffcf33',
-      main: '#ffc400',
-      contrastText: '#b28900',
+      light: '#ffcd38',
+      main: '#ffc107',
+      contrastText: '#b28704',
     }, 
   },
 });
+
 import 'scss/index.scss';
 class App extends React.Component {
   render() {

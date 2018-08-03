@@ -1,21 +1,70 @@
-.product-save{
-    .form{
-      padding-top:15px;
+.product-save {
+    .form {
+        padding-top: 15px;
     }
-    .fc{
+    .fc {
         padding: 15px 0;
         text-align: center;
     }
-    .control{
+    .fc-img {
+        padding-top: 0;
+    }
+    .control {
         width: 60%;
     }
-    .control-half{
+    .control-half {
         width: 30%;
     }
-    .btn{
+    .btn {
         color: #fff;
     }
+    .control-file {
+        text-align: left;
+    }
+    .control-btn {
+        text-align: left;
+    }
+    .control-img {
+        text-align: left;
+        .img-box {
+            display: flex;
+            padding: 6px 0 7px;
+            color: rgba(0, 0, 0, 0.54);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+            .img-item {
+                cursor: pointer;
+                position: relative;
+                float: left;
+                img {
+                    width: 80px;
+                    height: 80px;
+                    border: 1px solid #ccc;
+                    margin: 10px;
+                }
+                .img-close {
+                    color: #ccc;
+                    position: absolute;
+                    left: 88px;
+                    top: -1px;
+                    display: none;
+                }
+            }
+            .img-item:hover {
+                .img-close {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+    .control-rich{
+        text-align: left;
+        .simditor-body{
+            height: 400px;
+            overflow: auto;
+        }
+    }
 }
+
 .font {
     font-size: 14px !important;
 }

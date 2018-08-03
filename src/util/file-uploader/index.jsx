@@ -1,6 +1,7 @@
 import React from 'react';
 import FileUpload from './react-fileupload.jsx';
-
+import Button from '@material-ui/core/Button';
+import { Icon } from 'antd';
 
 class FileUploader extends React.Component {
 
@@ -9,6 +10,7 @@ class FileUploader extends React.Component {
 			baseUrl: '/manage/product/upload.do',
 			fileFieldName: 'upload_file',
 			dataType: 'json',
+			chooseAndUpload : true,
 			uploadSuccess: (res) => {
 				this.props.onSuccess(res.data);
 			},
@@ -18,8 +20,9 @@ class FileUploader extends React.Component {
 		}
 		return (
 			<FileUpload options={options}>
-				<button ref="chooseBtn">请选择图片</button>
-				<button ref="uploadBtn">upload</button>
+				<Button variant="contained" color="primary" className='btn' style={{ width: 120 }} ref="chooseAndUpload">
+				<Icon type="cloud-upload-o" style={{fontSize: 18, paddingRight: 5}}/>上传图片
+				</Button>
 			</FileUpload>
 		)
 	}

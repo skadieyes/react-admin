@@ -7,10 +7,11 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { Card, Row, Col } from 'antd';
+import { Card, Row, Col, Icon } from 'antd';
 import Common from 'util/common.jsx';
 import Product from 'service/product-service.jsx';
 import FileUploader from 'util/file-uploader/index.jsx';
+import RichEditor from 'util/rich-editor/index.jsx';
 import './save.scss';
 
 const _common = new Common();
@@ -30,6 +31,8 @@ class ProductSave extends React.Component {
                 subtitle: '',
                 price: '',
                 stock: '',
+                detail: '',
+                status: 1 // 在售
             }
         }
     }
@@ -66,9 +69,11 @@ class ProductSave extends React.Component {
                     this.loadSecondCategory();
                 });
                 break;
+            case 'detail':
+                this.setState(Object.assign(this.state.form, { [name]: e }));
+                break;
             default: this.setState(Object.assign(this.state.form, { [name]: e.target.value }));
         }
-
     }
     // 上传图片成功
     onUploadSuccess(url) {
@@ -80,6 +85,90 @@ class ProductSave extends React.Component {
     // 上传图片失败
     onUploadError(error) {
         _common.errorTips(error.message || '上传图片失败');
+    }
+    // 删除图片
+    deleteImg(index) {
+        let { subImages } = this.state;
+        subImages.splice(index, 1);
+        this.setState({
+            subImages: subImages
+        })
+    }
+    // 检查保存商品的表单数据
+    checkProduct(product) {
+        let result = {
+            status: true,
+            msg: '验证通过'
+        };
+        // 判断用户名为空
+        if (typeof product.name !== 'string' || product.name.length === 0) {
+            return {
+                status: false,
+                msg: '请填写商品名称'
+            }
+        }
+        // 判断描述不能为空
+        if (typeof product.subtitle !== 'string' || product.subtitle.length === 0) {
+            return {
+                status: false,
+                msg: '商品描述不能为空！'
+            }
+        }
+        // 验证品类ID
+        if (typeof product.categoryId !== 'number' || !(product.categoryId > 0)) {
+            return {
+                status: false,
+                msg: '请选择商品品类！'
+            }
+        }
+        // 判断商品价格为数字，且大于0
+        if (typeof product.price !== 'number' || !(product.price >= 0)) {
+            return {
+                status: false,
+                msg: '请输入正确的商品价格！'
+            }
+        }
+        // 判断库存为数字，且大于或等于0
+        if (typeof product.stock !== 'number' || !(product.stock >= 0)) {
+            return {
+                status: false,
+                msg: '请输入正确的库存数量！'
+            }
+        }
+
+        return result;
+    }
+    // 提交保存
+    onSubmit() {
+        let { subImages, form } = this.state;
+        let images = [];
+        subImages.length && subImages.map((image) => {
+            images.push(image.uri);
+        })
+        let params = {
+            name: form.name,
+            subtitle: form.subtitle,
+            categoryId: parseInt(this.state.secondCategoryId),
+            subImages: images.join(),
+            detail: form.detail,
+            price: parseFloat(form.price),
+            stock: parseInt(form.stock),
+            status: form.status
+        }
+        let productCheckResult = this.checkProduct(params);
+        // 表单验证成功
+        if (productCheckResult.status) {
+            _product.saveProduct(params).then((res) => {
+                _common.successTips(res);
+                this.props.history.push('/crud/product');
+            }, (errMsg) => {
+                _common.errorTips(errMsg);
+            });
+        }
+        // 表单验证失败
+        else {
+            _common.errorTips(productCheckResult.msg);
+        }
     }
     render() {
         const { form, firstCategoryList, secondCategoryList, subImages } = this.state;
@@ -162,24 +251,39 @@ class ProductSave extends React.Component {
                                     </FormControl>
                                 </div>
                                 <div className='fc'>
-                                    <FormControl className='control' >
+                                    <FormControl className='control control-file' >
                                         <FileUploader onSuccess={this.onUploadSuccess.bind(this)}
                                             onError={this.onUploadError.bind(this)} />
                                     </FormControl>
                                 </div>
-                                <div className='fc'>
-                                    <FormControl className='control' >
-                                        {
-                                            subImages.length ? subImages.map((image, index) => {
-                                                return <img key={index} src={image.url} />
-                                            }) : '请上传图片'
-                                        }
+                                <div className='fc fc-img'>
+                                    <FormControl className='control control-img' >
+                                        <div className='img-box'>
+                                            {
+                                                subImages && subImages.length > 0 ? subImages.map((image, index) => {
+                                                    return <div className='img-item' key={index} onClick={this.deleteImg.bind(this, index)}>
+                                                        <img className='img' key={index} src={image.url} />
+                                                        <Icon type="close-circle-o" className='img-close' />
+                                                    </div>
+                                                }) : '还没有上传图片'
+                                            }
+                                        </div>
                                     </FormControl>
                                 </div>
                                 <div className='fc'>
-                                    <Button variant="contained" color="primary" className='btn' style={{ width: 100 }}>
-                                        保存
+                                    <FormControl className='control control-rich' >
+                                        <InputLabel>商品详情</InputLabel>
+                                        <RichEditor onValueChange={this.handleChange.bind(this, 'detail')} />
+                                    </FormControl>
+                                </div>
+                                <div className='fc'>
+                                    <FormControl className='control control-btn' >
+                                        <Button variant="contained" color="primary" className='btn' style={{ width: 100 }}
+                                            onClick={this.onSubmit.bind(this)}
+                                        >
+                                            保存
                                      </Button>
+                                    </FormControl>
                                 </div>
                             </div>
                         </Card>

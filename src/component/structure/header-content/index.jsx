@@ -52,7 +52,7 @@ class HeaderContent extends React.Component {
         return (
             <div className='header-content'>
             <div className='header-menu'>
-                <Menu
+              {/*   <Menu
                     onClick={this.handleClick.bind(this)}
                     selectedKeys={[this.state.current]}
                     mode="horizontal"
@@ -70,7 +70,7 @@ class HeaderContent extends React.Component {
                             <Menu.Item key="setting:4">Option 4</Menu.Item>
                         </MenuItemGroup>
                     </SubMenu>
-                </Menu>
+                </Menu> */}
                 </div>
                 <div className='header-dropdown'>
                 <Dropdown overlay={this.menu()} trigger={['click']}>

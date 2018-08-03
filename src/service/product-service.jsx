@@ -12,7 +12,7 @@ class Product {
         })
     }
     // 搜索商品列表
-    searchProductList(params){
+    searchProductList(params) {
         return _request.post({
             url: '/manage/product/search.do',
             data: params
@@ -25,18 +25,25 @@ class Product {
             data: productStatus
         })
     }
+    // 保存商品
+    saveProduct(product) {
+        return _request.post({
+            url: '/manage/product/save.do',
+            data: product
+        })
+    }
 
     /*
     * 品类相关
     * */
-   getCategoryList(parentCategoryId){
-    return _request.post({
-        url: '/manage/category/get_category.do',
-        data: {
-            categoryId: parentCategoryId || 0
-        }
-    })
-   }
+    getCategoryList(parentCategoryId) {
+        return _request.post({
+            url: '/manage/category/get_category.do',
+            data: {
+                categoryId: parentCategoryId || 0
+            }
+        })
+    }
 }
 
 export default Product;

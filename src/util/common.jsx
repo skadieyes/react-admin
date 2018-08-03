@@ -1,4 +1,6 @@
-class Common {
+import { message } from 'antd';
+import React  from 'react';
+class Common extends React.Component {
     // 获取url参数
     getUrlParam(name) {
         let queryString = window.location.search.split('?')[1] || '',
@@ -8,11 +10,11 @@ class Common {
     }
     // 错误提示
     errorTips(errMsg) {
-        console.log(errMsg || '操作失败');
+        message.error(errMsg || '好像哪里出错了');
     }
     // 成功提示
     successTips(successMsg) {
-        console.log(successMsg || '操作成功');
+        message.success(successMsg || '操作成功');
     }
     // 本地存储
     setStorage(name, data) {
