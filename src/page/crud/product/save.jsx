@@ -21,13 +21,14 @@ class ProductSave extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: this.props.match.params.pid,
             firstCategoryList: [],
             secondCategoryList: [],
             subImages: [],
             form: {
                 name: '',
                 firstCategoryId: '',
-                secondCategoryId: '',
+                secondCategoryId: 0,
                 subtitle: '',
                 price: '',
                 stock: '',
@@ -38,6 +39,47 @@ class ProductSave extends React.Component {
     }
     componentDidMount() {
         this.loadFirstCategory();
+        this.loadProduct();
+    }
+    // 加载商品
+    loadProduct() {
+        // 有id的时候，编辑功能
+        if (this.state.id) {
+            _product.getProduct(this.state.id).then((res) => {
+                let images = res.subImages.split(',');
+                res.subImages = images.map((imgUri) => {
+                    return {
+                        uri: imgUri,
+                        url: res.imageHost + imgUri
+                    }
+                });
+                res.defaultDetail = res.detail;
+                Object.keys(res).forEach(key => {
+                    switch (key) {
+                        case 'parentCategoryId':
+                            if (res[key] === 0) {
+                                this.setState(Object.assign(this.state.form, { 'firstCategoryId': res['categoryId'] }));
+                            } else {
+                                this.setState(Object.assign(this.state.form, { 'firstCategoryId': res[key] }));
+                                this.loadSecondCategory(res[key]);
+                            }
+                            break;
+                        case 'categoryId':
+                            if (res[key] !== 0) {
+                                this.setState(Object.assign(this.state.form, { 'secondCategoryId': res[key] }));
+                            }
+                            break;
+                        case 'subImages': this.setState({
+                            'subImages': res[key]
+                        });
+                            break;
+                        default: this.setState(Object.assign(this.state.form, { [key]: res[key] }));
+                    }
+                })
+            }, (errMsg) => {
+                _common.errorTips(errMsg);
+            })
+        }
     }
     //加载一级分类
     loadFirstCategory() {
@@ -50,8 +92,8 @@ class ProductSave extends React.Component {
         });
     }
     //加载二级分类
-    loadSecondCategory() {
-        _product.getCategoryList(this.state.firstCategoryId).then(res => {
+    loadSecondCategory(firstCategoryId) {
+        _product.getCategoryList(firstCategoryId).then(res => {
             this.setState({
                 secondCategoryList: res
             })
@@ -66,7 +108,7 @@ class ProductSave extends React.Component {
                     [name]: e.target.value,
                 }), () => {
                     // 更新二级品类
-                    this.loadSecondCategory();
+                    this.loadSecondCategory(this.state.firstCategoryId);
                 });
                 break;
             case 'detail':
@@ -147,6 +189,7 @@ class ProductSave extends React.Component {
         })
         let params = {
             name: form.name,
+            id: this.state.id,
             subtitle: form.subtitle,
             categoryId: parseInt(this.state.secondCategoryId),
             subImages: images.join(),
@@ -160,7 +203,6 @@ class ProductSave extends React.Component {
         if (productCheckResult.status) {
             _product.saveProduct(params).then((res) => {
                 _common.successTips(res);
-                this.props.history.push('/crud/product');
             }, (errMsg) => {
                 _common.errorTips(errMsg);
             });
@@ -172,6 +214,7 @@ class ProductSave extends React.Component {
     }
     render() {
         const { form, firstCategoryList, secondCategoryList, subImages } = this.state;
+        console.log(form);
         return <div className='product-save'>
             <Title title={'添加商品'} >
             </Title>
@@ -196,7 +239,7 @@ class ProductSave extends React.Component {
                                     </FormControl>
                                 </div>
                                 <div className='fc'>
-                                    <FormControl className='control-half' style={{ paddingRight: 15 }} >
+                                    <FormControl className='control' >
                                         <InputLabel>一级分类</InputLabel>
                                         <Select
                                             value={form.firstCategoryId}
@@ -206,15 +249,15 @@ class ProductSave extends React.Component {
                                         >
                                             {
                                                 firstCategoryList.length > 0 && firstCategoryList.map((category, index) => {
-                                                    if (index < 30) {
-                                                        return <MenuItem value={category.id} key={index} className='font'>{category.name}</MenuItem>
-                                                    }
+                                                    return <MenuItem value={category.id} key={index} className='font'>{category.name}</MenuItem>
                                                 })
                                             }
                                         </Select>
                                     </FormControl>
-                                    <FormControl className='control-half' style={{ paddingLeft: 15 }}  >
-                                        <InputLabel style={{ paddingLeft: 15 }}>二级分类</InputLabel>
+                                </div>
+                                {form.secondCategoryId !== form.firstCategoryId && <div className='fc'>
+                                    <FormControl className='control'  >
+                                        <InputLabel >二级分类</InputLabel>
                                         <Select
                                             value={form.secondCategoryId}
                                             className='font'
@@ -223,15 +266,13 @@ class ProductSave extends React.Component {
                                         >
                                             {
                                                 secondCategoryList.length > 0 && secondCategoryList.map((category, index) => {
-                                                    if (index < 30) {
-                                                        return <MenuItem value={category.id} key={index} className='font'>{category.name}</MenuItem>
-                                                    }
+                                                    return <MenuItem value={category.id} key={index} className='font'>{category.name}</MenuItem>
                                                 })
                                             }
                                         </Select>
-
                                     </FormControl>
                                 </div>
+                                }
                                 <div className='fc'>
                                     <FormControl className='control' >
                                         <InputLabel>商品价格</InputLabel>
@@ -273,7 +314,9 @@ class ProductSave extends React.Component {
                                 <div className='fc'>
                                     <FormControl className='control control-rich' >
                                         <InputLabel>商品详情</InputLabel>
-                                        <RichEditor onValueChange={this.handleChange.bind(this, 'detail')} />
+                                        <RichEditor
+                                            defaultDetail={this.state.detail}
+                                            onValueChange={this.handleChange.bind(this, 'detail')} />
                                     </FormControl>
                                 </div>
                                 <div className='fc'>

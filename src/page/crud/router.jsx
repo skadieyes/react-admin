@@ -6,7 +6,7 @@ class CrudRouter extends React.Component {
     render() {
         return (
             <Switch>
-                 <Route path='/crud/product/save' component={ProductSave} />
+                <Route path='/crud/product/save/:pid?' component={ProductSave} />
                 <Route path='/crud/product' component={ProductList} />
                 <Redirect exact from='/crud' to='/crud/product' />
             </Switch>

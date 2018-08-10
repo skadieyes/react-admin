@@ -25,6 +25,15 @@ class Product {
             data: productStatus
         })
     }
+    // 获取商品详情
+    getProduct(productId) {
+        return _request.post({
+            url: '/manage/product/detail.do',
+            data: {
+                productId: productId || 0
+            }
+        });
+    }
     // 保存商品
     saveProduct(product) {
         return _request.post({

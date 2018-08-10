@@ -181,16 +181,16 @@ class ProductList extends React.Component {
                             />
                         </span>,
                     operation: <span >
-                        <Link to={`/product/detail/${item.id}`}>
-                            <IconButton color="primary">
-                                <Tooltip title="详情" placement="top">
+                        <Link to={`/crud/product/save/${item.id}`}>
+                            <IconButton color="secondary">
+                                <Tooltip title="编辑" placement="top">
                                     <Icon type="edit" />
                                 </Tooltip>
                             </IconButton>
                         </Link>
-                        <Link to={`/product/save/'${item.id}`}>
-                            <IconButton color="secondary">
-                                <Tooltip title="编辑" placement="top">
+                        <Link to={`/product/detail/${item.id}`}>
+                            <IconButton color="primary">
+                                <Tooltip title="详情" placement="top">
                                     <Icon type="ellipsis" />
                                 </Tooltip>
                             </IconButton>
