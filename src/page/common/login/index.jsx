@@ -74,6 +74,7 @@ class Login extends React.Component {
     render() {
         const { classes } = this.props;
         return (
+            <div>
             <div className='login-bg'>
                 <div className='card-box'>
                     <div className='title'>
@@ -114,7 +115,9 @@ class Login extends React.Component {
                         </form>
                     </Card>
                 </div>
-            </div>
+                </div>
+         <div className='bg-inner' />
+         </div>
         );
     }
 }

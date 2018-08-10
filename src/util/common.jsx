@@ -29,7 +29,7 @@ class Common extends React.Component {
         }
         // 其他不支持的类型
         else {
-            console.log('该类型不能用于本地存储');
+            errorTips('该类型不能用于本地存储');
         }
     }
     // 取出本地存储内容

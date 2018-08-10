@@ -28,7 +28,7 @@ class ProductSave extends React.Component {
             form: {
                 name: '',
                 firstCategoryId: '',
-                secondCategoryId: 0,
+                secondCategoryId: '',
                 subtitle: '',
                 price: '',
                 stock: '',
@@ -214,7 +214,6 @@ class ProductSave extends React.Component {
     }
     render() {
         const { form, firstCategoryList, secondCategoryList, subImages } = this.state;
-        console.log(form);
         return <div className='product-save'>
             <Title title={'添加商品'} >
             </Title>

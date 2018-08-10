@@ -188,7 +188,7 @@ class ProductList extends React.Component {
                                 </Tooltip>
                             </IconButton>
                         </Link>
-                        <Link to={`/product/detail/${item.id}`}>
+                        <Link to={`/crud/product/detail/${item.id}`}>
                             <IconButton color="primary">
                                 <Tooltip title="详情" placement="top">
                                     <Icon type="ellipsis" />

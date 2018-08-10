@@ -15,7 +15,8 @@ module.exports = {
             component: path.resolve(__dirname, './src/component'),
             util: path.resolve(__dirname, './src/util'),
             service: path.resolve(__dirname, './src/service'),
-            scss: path.resolve(__dirname, './src/scss')
+            scss: path.resolve(__dirname, './src/scss'),
+            asset: path.resolve(__dirname, './src/asset')
         }
     },
     devServer: {

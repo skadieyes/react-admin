@@ -2,28 +2,58 @@
     height: 100%;
     .trigger {
         font-size: 18px;
-        background-color: #ccc;
-        line-height: 64px;
         padding: 0 24px;
         cursor: pointer;
         transition: color .3s;
     }
-    
     .trigger:hover {
         color: #1890ff;
     }
-    
-    .logo {
+    .ant-layout-header {
         height: 32px;
-        background: rgba(255, 255, 255, .2);
-        margin: 16px;
+        line-height: 32px;
+        margin-top: 20px;
     }
-    .header{
-        background: #ffffff; 
+    .logo {
+        height: 50px;
+        margin: 16px;
+        font-size: 32px;
+        position: relative;
+        color: #fff;
+        .logo-link {
+            padding-left: 6px;
+            color: #ffd666;
+        }
+        .label {
+            font-size: 16px;
+            padding-left: 10px;
+            position: absolute;
+            top: 15px;
+            color: #fff;
+            transition: font-size 0.15s cubic-bezier(0.215, 0.61, 0.355, 1), margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)
+        }
+    }
+    .header {
+        background-color: rgb(240, 242, 245);
         padding: 0;
         display: flex;
-        .ant-menu-horizontal{
+        .ant-menu-horizontal {
             line-height: 61px;
+        }
+    }
+    .sider {
+        background: url('~asset/img/star.png') !important;
+        .ant-menu{
+            background: none !important;
+        }
+        .ant-menu-item {
+            width: 100%;
+            font-size: 16px;
+            font-weight: 200;
+        }
+        .ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
+            background: transparent!important;
+            border-right: 10px solid rgb(240, 242, 245);
         }
     }
 }

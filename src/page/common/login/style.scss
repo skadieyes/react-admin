@@ -2,10 +2,10 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #eee;
     display: flex;
     justify-content: center;
     overflow: hidden;
+    z-index: 10;
     .card-box {
         top: 20%;
         padding-top: 30px;
@@ -30,21 +30,24 @@
         width: 400px;
         margin-top: 0 !important;
         padding-top: 30px;
+        background: rgba(255, 255, 255, 0.2);
     }
-    .button-box{
+    .button-box {
         width: 100%;
         padding-top: 30px;
     }
-    .btn{
+    .btn {
         color: #fff;
     }
     .MuiFormLabel-root-13 {
         font-size: 14px !important;
-        color: #495057 !important;
+        color: #fff !important;
+        font-weight: 200 !important;
     }
     .MuiInput-input-26 {
         font-size: 14px !important;
-        color: #495057 !important;
+        color: #fff !important;
+        font-weight: 200 !important;
     }
     .MuiInput-underline-22:after {
         border-bottom: 2px solid #ec407a !important;
@@ -52,4 +55,15 @@
     .MuiInput-underline-22:hover:not(.MuiInput-disabled-20):not(.MuiInput-focused-19):not(.MuiInput-error-22):before {
         border-bottom: 1px solid rgba(0, 0, 0, 0.47) !important;
     }
+}
+.bg-inner {
+    position: absolute;
+    background: url('~asset/img/star_bg.jpg');
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 0;
+    filter: blur(6px);
 }

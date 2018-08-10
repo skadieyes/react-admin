@@ -20,7 +20,6 @@ class HeaderContent extends React.Component {
     }
 
     handleClick(e) {
-        console.log('click ', e);
         this.setState({
             current: e.key,
         });
@@ -30,7 +29,7 @@ class HeaderContent extends React.Component {
         const menu = (
             <Menu>
                 <Menu.Item key="0">
-                    <a onClick = {this.logout.bind(this)}>退出</a>
+                    <a onClick={this.logout.bind(this)}>退出</a>
                 </Menu.Item>
             </Menu>
         )
@@ -51,8 +50,8 @@ class HeaderContent extends React.Component {
         const { username } = this.state;
         return (
             <div className='header-content'>
-            <div className='header-menu'>
-              {/*   <Menu
+                <div className='header-menu'>
+                    {/*   <Menu
                     onClick={this.handleClick.bind(this)}
                     selectedKeys={[this.state.current]}
                     mode="horizontal"
@@ -73,11 +72,11 @@ class HeaderContent extends React.Component {
                 </Menu> */}
                 </div>
                 <div className='header-dropdown'>
-                <Dropdown overlay={this.menu()} trigger={['click']}>
-                    <a className="dropdown-link" href="#">
-                        <i className='fa fa-user-o' />  Welecom  {username}  <Icon type="down" />
-                    </a>
-                </Dropdown>
+                    <Dropdown overlay={this.menu()} trigger={['click']}>
+                        <a className="dropdown-link" href="#">
+                            <Icon type='user' /> {username}  <Icon type="down" />
+                        </a>
+                    </Dropdown>
                 </div>
             </div>
         );

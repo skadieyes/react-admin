@@ -1,12 +1,18 @@
 import React from 'react';
-import Title from 'component/structure/title/index.jsx'
+import './style.scss';
 class ErrorPage extends React.Component {
     render() {
-        return (<div>
-            <Title title={'Error'} >
-            </Title>
-            <div>
-                出错啦
+        return (<div className='error'>
+            <div className='img-box'>
+                img
+        </div>
+            <div className='text-box'>
+                <div className='error-text'>
+                    404
+            </div>
+                <div className='label'>
+                    出错啦
+            </div>
             </div>
         </div>
         )

@@ -11,6 +11,15 @@ class SiderContent extends React.Component {
         super(props);
         this.state = {
             collapsed: false,
+            menu: [
+                { id: '1', icon: 'home', label: '首页', link: '/home' },
+                { id: '2', icon: 'book', label: '列表', link: '/user' },
+                { id: '3', icon: 'code-o', label: '复杂列表', link: '/crud/product' },
+                { id: '4', icon: 'file-text', label: '表单', link: '/crud/product/save' },
+                { id: '5', icon: 'share-alt', label: '详情页', link: '/crud/product/detail/26' },
+                { id: '6', icon: 'eye-o', label: '登陆页', link: '/login' },
+                { id: '7', icon: 'medicine-box', label: '错误页', link: '/error' },
+            ]
         };
 
     }
@@ -20,26 +29,19 @@ class SiderContent extends React.Component {
         });
     }
     render() {
+        const { menu } = this.state;
         return (
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                <Menu.Item key="home">
-                    <Link to='/home'>
-                        <Icon ><i className='fa fa-home icon'></i> </Icon>
-                        <span>首页</span>
-                    </Link>
-                </Menu.Item>
-
-                <SubMenu key="sub1"
-                    title={<span> <Icon ><i className='fa fa-database icon'></i> </Icon><span>增删改查</span></span>}>
-                    <Menu.Item key="user"> <Link to='/user'> 数据列表 </Link></Menu.Item>
-                    <Menu.Item key="product"> <Link to='/crud/product'> 列表操作 </Link></Menu.Item>
-                </SubMenu>
-
-                <SubMenu key="sub2"
-                    title={<span> <Icon ><i className='fa fa-database icon'></i> </Icon><span>通用</span></span>}>
-                    <Menu.Item key="login"> <Link to='/login'> 登录页 </Link></Menu.Item>
-                    <Menu.Item key="error"> <Link to='/error'> 错误页 </Link></Menu.Item>
-                </SubMenu>
+                {
+                    menu && menu.length > 0 && menu.map((item) => {
+                        return <Menu.Item key={item.id}>
+                            <Link to={item.link}>
+                                <Icon type={item.icon} />
+                                <span>{item.label}</span>
+                            </Link>
+                        </Menu.Item>
+                    })
+                }
 
             </Menu>
         );

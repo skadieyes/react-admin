@@ -1,0 +1,18 @@
+.error {
+    display: flex;
+    padding-top: 5%;
+    .img-box {
+        width: 62.5%;
+    }
+    .text-box {
+        display: flex;
+        flex-direction: column;
+        .error-text {
+            color: #434e59;
+            font-size: 72px;
+            font-weight: 600;
+            line-height: 72px;
+            margin-bottom: 24px;
+        }
+    }
+}
