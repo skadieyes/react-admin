@@ -1,11 +1,12 @@
 import React from 'react';
 import './style.scss';
+import { Icon } from 'antd';
 class ErrorPage extends React.Component {
     render() {
         return (<div className='error'>
             <div className='img-box'>
-                img
-        </div>
+                <Icon type="frown-o" />
+            </div>
             <div className='text-box'>
                 <div className='error-text'>
                     404

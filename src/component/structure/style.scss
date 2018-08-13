@@ -43,6 +43,7 @@
     }
     .sider {
         background: url('~asset/img/star.png') !important;
+        box-shadow: 2px 0 6px rgba(0,21,41,.35);
         .ant-menu{
             background: none !important;
         }
@@ -52,8 +53,7 @@
             font-weight: 200;
         }
         .ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
-            background: transparent!important;
-            border-right: 10px solid rgb(240, 242, 245);
+           background-color: rgba(255,255,255,0.35) !important
         }
     }
 }

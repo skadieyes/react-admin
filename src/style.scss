@@ -9,7 +9,9 @@ body,
 #app {
     height: 100%
 }
-
+#app{
+    min-width: 900px;
+}
 a:link,
 a:active,
 a:hover,

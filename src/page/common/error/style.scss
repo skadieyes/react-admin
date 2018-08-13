@@ -1,18 +1,24 @@
 .error {
-    display: flex;
     padding-top: 5%;
+    text-align: center;
     .img-box {
-        width: 62.5%;
+        font-size: 180px;
     }
     .text-box {
         display: flex;
         flex-direction: column;
+        padding-top: 15px;
         .error-text {
             color: #434e59;
             font-size: 72px;
             font-weight: 600;
             line-height: 72px;
             margin-bottom: 24px;
+        }
+        .label{
+            color: rgba(0,0,0,.45);
+            font-size: 20px;
+            line-height: 28px;
         }
     }
 }
