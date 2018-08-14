@@ -1164,7 +1164,7 @@
     .layout .header .ant-menu-horizontal {
       line-height: 61px; }
   .layout .sider {
-    background: url(/dist/resource/star.png) !important;
+    background: url(../resource/star.png) !important;
     box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35); }
     .layout .sider .ant-menu {
       background: none !important; }
@@ -23010,7 +23010,7 @@ input:-webkit-autofill {
 
 .bg-inner {
   position: absolute;
-  background: url(/dist/resource/star_bg.jpg);
+  background: url(../resource/star_bg.jpg);
   width: 100%;
   height: 100%;
   display: flex;
